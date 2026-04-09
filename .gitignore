@@ -3,6 +3,7 @@
 
 # folders
 /dist
+/log
 
 # Compiled Object files
 *.slo
