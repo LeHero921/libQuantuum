@@ -30,3 +30,17 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 clean:
 	rm -rf $(BUILD_DIR) $(LIB_DIR)
+
+DIST_DIR = dist
+
+.PHONY: export
+
+export: all
+	@echo "Packaging QuantuumFrame Engine..."
+	@mkdir -p $(DIST_DIR)/lib
+	@mkdir -p $(DIST_DIR)/include/QuantuumFrame
+	@# Kopiere die fertige Library
+	@cp $(LIB_DIR)/libquantuum.a $(DIST_DIR)/lib/
+	@# Kopiere ALLE Header-Dateien, aber behalte keine nervigen Unterordner
+	@find include -name '*.h' -exec cp {} $(DIST_DIR)/include/QuantuumFrame/ \;
+	@echo "Export ready in folder 'dist/'!"
